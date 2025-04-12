@@ -4,7 +4,7 @@ from src.masks.masks_card import get_mask_account
 
 def mask_account_card(account_card: str) -> str:
     """Функция которая умеет обрабатывать информацию как о картах, так и о счетах"""
-    if 'Счет' in account_card:
+    if "Счет" in account_card:
         return f"Счет {(get_mask_account(account_card))}"
     card_number = []
     card_name = []
@@ -15,7 +15,6 @@ def mask_account_card(account_card: str) -> str:
             card_number.append(i)
 
     return f"{"".join(card_name)} {get_mask_card_number("".join(card_number))}"
-
 
 
 print(mask_account_card("Счет 64686473678894779589"))
