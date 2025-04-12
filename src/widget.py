@@ -13,3 +13,9 @@ def mask_account_card(account_card: str) -> str:
         elif i.isdigit():
             card_number.append(i)
     return f"{"".join(card_name)} {get_mask_card_number("".join(card_number))}"
+
+
+def get_date(new_data: str) -> str:
+    """Функция преобразования даты"""
+    user_data = new_data[:10].split("-")[::-1]
+    return f"{".".join(user_data)}"
