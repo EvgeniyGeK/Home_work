@@ -1,14 +1,10 @@
-def filter_by_state(user_state: list[dict], state: str = "EXECUTED") -> list:
-    """Функция сортировки словарей по значению ключа"""
-    filter_list = []
-    for key in user_state:
-        if key.get("state") == state:
-            filter_list.append(key)
-    return filter_list
+def sort_by_date(user_date: list[dict], revers: bool = True) -> list[dict]:
+    """Функция сортировки по дате"""
+    return sorted(user_date, key=lambda x: x["date"], reverse=True)
 
 
 print(
-    filter_by_state(
+    sort_by_date(
         [
             {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
             {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
