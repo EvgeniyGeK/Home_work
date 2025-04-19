@@ -7,6 +7,6 @@ def filter_by_state(user_state: list[dict], state: str = "EXECUTED") -> list:
     return filter_list
 
 
-def sort_by_date(user_date: list[dict], revers: bool = True) -> list:
+def sort_by_date(user_date: list[dict], revers: bool = True) -> list[dict]:
     """Функция сортировки по дате"""
     return sorted(user_date, key=lambda x: x["date"], reverse=True)

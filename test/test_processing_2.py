@@ -1,7 +1,4 @@
-def sort_by_date(user_date: list[dict], revers: bool = True) -> list[dict]:
-    """Функция сортировки по дате"""
-    return sorted(user_date, key=lambda x: x["date"], reverse=True)
-
+from src.processing import sort_by_date
 
 print(
     sort_by_date(
