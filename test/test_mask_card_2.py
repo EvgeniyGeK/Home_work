@@ -1,6 +1,4 @@
-def get_mask_account(account_number: int) -> str:
-    """Функция маскировки номера банковского счета"""
-    return f"**{str(account_number)[-4:]}"
+from src.masks.masks_card import get_mask_account
 
 
 print(get_mask_account(1211789458745623))
