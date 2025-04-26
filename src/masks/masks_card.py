@@ -8,6 +8,9 @@ def get_mask_card_number(number_list: str) -> str:
     )
 
 
-def get_mask_account(account_number: int) -> str:
+def get_mask_account(account_number: str) -> str:
     """Функция маскировки номера банковского счета"""
-    return f"**{str(account_number)[-4:]}"
+    if len(account_number) != 20 or account_number == ():
+        return 'Не верный номер счета'
+    else:
+        return f"**{str(account_number)[-4:]}"

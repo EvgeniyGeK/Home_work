@@ -3,12 +3,14 @@ import pytest
 
 @pytest.fixture
 def test_number():
+    """Для функции masks_card"""
     return '7000 79** **** 6361'
 
 
 @pytest.fixture
 def test_account():
-    return '1211789458745623'
+    """Для функции masks_account"""
+    return '**4305'
 
 
 @pytest.fixture
