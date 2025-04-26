@@ -3,12 +3,12 @@ import pytest
 
 @pytest.fixture
 def test_number():
-    return 1211789458745623
+    return '7000 79** **** 6361'
 
 
 @pytest.fixture
 def test_account():
-    return 1211789458745623
+    return '1211789458745623'
 
 
 @pytest.fixture
