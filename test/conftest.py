@@ -15,12 +15,12 @@ def test_account():
 
 @pytest.fixture
 def test_account_card():
-    return "Счет 64686473678894779589"
+    return "Счет **9589"
 
 
 @pytest.fixture
 def test_date():
-    return "2024-03-11T02:26:18.671407"
+    return "11.03.2024"
 
 
 @pytest.fixture
