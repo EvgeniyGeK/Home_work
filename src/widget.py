@@ -16,15 +16,13 @@ def mask_account_card(account_card: str) -> str:
     return f"{" ".join(card_name[:2])} {get_mask_card_number("".join(card_number))}"
 
 
-
-
 def get_date(new_data: str) -> str:
     """Функция преобразования даты"""
     date = new_data[:10]
     if len(date) == 0:
         raise ValueError("Указана не существующая дата")
     elif "-" not in new_data or ":" in date or "." in date or "/" in date:
-        return  "Указан не верный формат даты"
+        return "Указан не верный формат даты"
     elif date[:4] > "3000" or date[:4] == "0000":
         return "Указана не существующая дата"
     elif date[5:7] == "00" or date[8:10] == "00":
@@ -35,7 +33,6 @@ def get_date(new_data: str) -> str:
         return "Указана не существующая дата"
     elif "-" in date[:4]:
         return "Указан не верный формат даты"
-
 
     user_data = new_data[:10].split("-")[::-1]
     return f"{".".join(user_data)}"
