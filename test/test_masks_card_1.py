@@ -5,7 +5,7 @@ from src.masks.masks_card import get_mask_card_number
 
 def test_get_mask_card_number(test_number):
     """Тест с использованием фикстуры"""
-    assert get_mask_card_number("7000792289606361") == test_number
+    assert get_mask_card_number(test_number) == "7000 79** **** 6361"
 
 
 @pytest.mark.parametrize(

@@ -5,7 +5,7 @@ from src.widget import mask_account_card
 
 def test_mask_account_card(test_account_card):
     """Тест с использованием фикстуры"""
-    assert mask_account_card("Счет 64686473678894779589") == test_account_card
+    assert mask_account_card(test_account_card) == "Счет **9589"
 
 @pytest.mark.parametrize(
     "number_account, expected",

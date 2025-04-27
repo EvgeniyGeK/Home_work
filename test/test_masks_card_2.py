@@ -5,7 +5,7 @@ from src.masks.masks_card import get_mask_account
 
 def test_get_mask_account(test_account):
     """Тест с использованием фикстуры"""
-    assert get_mask_account("73654108430135874305") == test_account
+    assert get_mask_account(test_account) == "**4305"
 
 
 @pytest.mark.parametrize(
