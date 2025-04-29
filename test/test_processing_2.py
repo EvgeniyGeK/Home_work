@@ -19,13 +19,14 @@ def test_sort_by_date_2(test_sorty_2):
         {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
         {"id": 594226727, "state": "CANCELED", "date": "2018-06-30T21:27:25.241689"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
-        ]
+    ]
+
 
 def test_sort_by_date_3(test_sorty_3):
     with pytest.raises(ValueError) as e:
-        var = [{"id": 41428829, "state": "EXECUTED"},
-            {"id": 939719570, "state": "EXECUTED"},]
+        var = [
+            {"id": 41428829, "state": "EXECUTED"},
+            {"id": 939719570, "state": "EXECUTED"},
+        ]
         sort_by_date(var)
     assert str(e.value) == "Дата отсутствует"
-
-        

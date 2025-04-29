@@ -17,7 +17,7 @@ def mask_account_card(account_card: str) -> str:
             card_number.append(i)
             # return get_mask_card_number("".join(card_number))
     new_number = get_mask_card_number("".join(card_number))
-    if new_number == 'Не верный номер карты':
+    if new_number == "Не верный номер карты":
         return new_number
     return f"{" ".join(card_name[:2])} {new_number}"
 

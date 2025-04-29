@@ -7,6 +7,7 @@ def test_mask_account_card(test_account_card):
     """Тест с использованием фикстуры"""
     assert mask_account_card(test_account_card) == "Счет **9589"
 
+
 @pytest.mark.parametrize(
     "number_account, expected",
     [
@@ -15,10 +16,8 @@ def test_mask_account_card(test_account_card):
         ("Visa Platinum 70007922896063612", "Не верный номер карты"),
         ("Visa Platinum 700079228960636", "Не верный номер карты"),
         ("", "Не верный номер карты"),
-        ]
+    ],
 )
 def test_get_mask_account_card_1(number_account, expected):
     """Тест с использованием параметризации"""
     assert mask_account_card(number_account) == expected
-
-
