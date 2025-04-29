@@ -22,7 +22,10 @@ def test_sort_by_date_2(test_sorty_2):
         ]
 
 def test_sort_by_date_3(test_sorty_3):
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError) as e:
         var = [{"id": 41428829, "state": "EXECUTED"},
             {"id": 939719570, "state": "EXECUTED"},]
+        sort_by_date(var)
+    assert str(e.value) == "Дата отсутствует"
+
         

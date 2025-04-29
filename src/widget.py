@@ -3,6 +3,8 @@ from src.masks.masks_card import get_mask_account, get_mask_card_number
 
 def mask_account_card(account_card: str) -> str:
     """Функция которая умеет обрабатывать информацию как о картах, так и о счетах"""
+    if not account_card:
+        return "Не верный номер карты"
     account_card_split = account_card.split()
     if "Счет" in account_card:
         return f"Счет {(get_mask_account(account_card_split[1]))}"
@@ -13,7 +15,11 @@ def mask_account_card(account_card: str) -> str:
             card_name.append(i)
         elif i.isdigit():
             card_number.append(i)
-    return f"{" ".join(card_name[:2])} {get_mask_card_number("".join(card_number))}"
+            # return get_mask_card_number("".join(card_number))
+    new_number = get_mask_card_number("".join(card_number))
+    if new_number == 'Не верный номер карты':
+        return new_number
+    return f"{" ".join(card_name[:2])} {new_number}"
 
 
 def get_date(new_data: str) -> str:
