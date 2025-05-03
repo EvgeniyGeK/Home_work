@@ -4,3 +4,7 @@ def filter_by_currency(transactions: list[dict], currency: str) -> dict:
         if i["operationAmount"]["currency"]["code"] == currency:
            yield i
 
+def transaction_descriptions(transactions: list[dict], description: str) -> str:
+    """Функция генератор которая принимает список словарей с транзакциями и возвращает описание каждой операции по очереди."""
+    for i in transactions:
+        yield i.get("description")
