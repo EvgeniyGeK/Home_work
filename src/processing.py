@@ -17,3 +17,4 @@ def sort_by_date(user_date: list[dict], ascending: bool = True) -> list[dict]:
             raise ValueError("Дата отсутствует")
 
     return sorted(user_date, key=lambda x: x.get("date"), reverse=ascending)
+
