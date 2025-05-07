@@ -3,6 +3,8 @@ def filter_by_currency(transactions: list[dict], currency: str) -> dict:
     for i in transactions:
         if i["operationAmount"]["currency"]["code"] == currency:
            yield i
+        # else:
+        #    raise "Операций в указанной валюте не найдено"
 
 def transaction_descriptions(transactions: list[dict], description: str) -> str:
     """Функция генератор которая принимает список словарей с транзакциями и возвращает описание каждой операции по очереди."""
