@@ -12,6 +12,9 @@ def transaction_descriptions(transactions: list[dict], description: str) -> str:
         yield i.get("description")
 
 
-def card_number_generator(start_number: int, stop_number: int):
-    number_card = (i for i in range(start_number, stop_number))
-    yield number_card
+def card_number_generator(start: int, end: int) -> str:
+    """Функция генерирует номер карты"""
+    for i in range(start, end + 1):
+        count_0 = "0" * (16 - len(str(i)))
+        number = count_0 + str(i)
+        yield f"{number[:4]} {number[4:8]} {number[8:12]} {number[12:]}"

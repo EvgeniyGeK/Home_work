@@ -49,7 +49,23 @@ from src.generators import transaction_descriptions
         "description": "Перевод с карты на карту",
         "from": "Visa Classic 6831982476737658",
         "to": "Visa Platinum 8990922113665229"
-    }], ["Перевод с карты на карту"])])
+    }], ["Перевод с карты на карту"]),
+        ([
+       {
+            "id": 873106923,
+            "state": "EXECUTED",
+            "date": "2019-03-23T01:09:46.296404",
+            "operationAmount": {
+                "amount": "43318.34",
+                "currency": {
+                    "name": "руб.",
+                    "code": "RUB"
+                }
+            },
+            "description": "",
+            "from": "Счет 44812258784861134719",
+            "to": "Счет 74489636417521191160"
+        }], [""])])
 
 
 def test_transaction_descriptions(transactions, expected):
@@ -57,24 +73,3 @@ def test_transaction_descriptions(transactions, expected):
     test_descriptions = transaction_descriptions(transactions,"descriptions")
     assert list(test_descriptions) == expected
 
-def test_transaction_descriptions_1(test_transaction_descriptions_fix: list) -> None:
-    # descriptions = transaction_descriptions(test_transaction_descriptions_fix, '')
-    with pytest.raises(ValueError) as e:
-       #  var =  [
-       # {
-       #      "id": 873106923,
-       #      "state": "EXECUTED",
-       #      "date": "2019-03-23T01:09:46.296404",
-       #      "operationAmount": {
-       #          "amount": "43318.34",
-       #          "currency": {
-       #              "name": "руб.",
-       #              "code": "RUB"
-       #          }
-       #      },
-       #      "description": "",
-       #      "from": "Счет 44812258784861134719",
-       #      "to": "Счет 74489636417521191160"
-       #  }]
-        transaction_descriptions(descriptions="")
-    assert str(e.value) == "Список транзакций отсутствует"
