@@ -27,3 +27,10 @@ def log(filename=None):
                 raise e
         return wrapper
     return decor_func
+
+
+@log(filename="mylog.txt")
+def my_function(x, y):
+    return x + y
+
+my_function(1, 2)
