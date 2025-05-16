@@ -1,0 +1,54 @@
+my_function ok
+test_log_decorator ok
+test_log_sum Ошибка: TypeError. Inputs: (), {'capsys': <_pytest.capture.CaptureFixture object at 0x00000221729D3620>, 'x': 1, 'y': 2, 'expected': 3}
+test_log_sum Ошибка: TypeError. Inputs: (), {'capsys': <_pytest.capture.CaptureFixture object at 0x0000022172886850>, 'x': 5, 'y': 6, 'expected': 11}
+test_log_sum Ошибка: TypeError. Inputs: (), {'capsys': <_pytest.capture.CaptureFixture object at 0x0000022172E58910>, 'x': 0, 'y': 0, 'expected': 0}
+test_log_sum Ошибка: TypeError. Inputs: (), {'capsys': <_pytest.capture.CaptureFixture object at 0x000001814DAD3620>, 'x': 1, 'y': 2, 'expected': 3}
+test_log_sum Ошибка: TypeError. Inputs: (), {'capsys': <_pytest.capture.CaptureFixture object at 0x000001814D986850>, 'x': 5, 'y': 6, 'expected': 11}
+test_log_sum Ошибка: TypeError. Inputs: (), {'capsys': <_pytest.capture.CaptureFixture object at 0x000001814DCE8690>, 'x': 0, 'y': 0, 'expected': 0}
+test_log_sum ok
+test_log_sum ok
+test_log_sum ok
+test_log_decorator ok
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 1, 'y': 2, 'expected': 3}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 5, 'y': 6, 'expected': 11}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 0, 'y': 0, 'expected': 0}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 1, 'y': 2, 'expected': 3}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 5, 'y': 6, 'expected': 11}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 0, 'y': 0, 'expected': 0}
+test_log_sum ok
+test_log_sum ok
+test_log_sum ok
+test_log_sum Ошибка: NameError. Inputs: (), {'x': 1, 'y': 2, 'expected': 3}
+test_log_sum Ошибка: NameError. Inputs: (), {'x': 5, 'y': 6, 'expected': 11}
+test_log_sum Ошибка: NameError. Inputs: (), {'x': 0, 'y': 0, 'expected': 0}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 1, 'y': 2, 'expected': 3}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 5, 'y': 6, 'expected': 11}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 0, 'y': 0, 'expected': 0}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 1, 'y': 2, 'expected': 3}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 5, 'y': 6, 'expected': 11}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 0, 'y': 0, 'expected': 0}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 1, 'y': 2, 'expected': 3}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 5, 'y': 6, 'expected': 11}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 0, 'y': 0, 'expected': 0}
+test_log_decorator ok
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 1, 'y': 2, 'expected': 3}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 5, 'y': 6, 'expected': 11}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 0, 'y': 0, 'expected': 0}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 1, 'y': 2, 'expected': 3}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 5, 'y': 6, 'expected': 11}
+test_log_sum Ошибка: TypeError. Inputs: (), {'x': 0, 'y': 0, 'expected': 0}
+test_log_division ok
+test_log_division ok
+test_log_division ok
+my_function ok
+test_log_division ok
+my_function ok
+my_function ok
+my_function ok
+test_log_sum ok
+test_log_sum ok
+test_log_sum ok
+my_function ok
+my_function Ошибка: ZeroDivisionError. Inputs: (1, 0), {}
+test_logging_error ok
