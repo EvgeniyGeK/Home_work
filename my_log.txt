@@ -1,7 +1,0 @@
-my_function ok
-test_log_division ok
-test_log_sum ok
-test_log_sum ok
-test_log_sum ok
-my_function Ошибка: ZeroDivisionError. Inputs: (1, 0), {}
-test_logging_error ok
