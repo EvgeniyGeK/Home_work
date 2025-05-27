@@ -11,3 +11,4 @@ def test_read_json_file():
         temp_file.write(b'{"key": "value"}')
         result = read_json_file(temp_file.name)
         assert result == []
+        
