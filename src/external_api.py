@@ -1,27 +1,40 @@
+import json
 import os
 import requests
 from dotenv import load_dotenv
+from config import PATH
+# path_to_file = PATH /"data" /"operation.json"
 
 load_dotenv('.env')
 
 API_KEY = os.getenv('APY_KEY')
+currency_rub = "RUB"
+
+with open('C:/Users/Evgeni/PycharmProjects/Home_work/data/operations.json', encoding='utf-8') as f:
+    transactions = json.load(f)
 
 
-def money_transaction(transaction: dict) -> [float, str]:
-    amount = transaction["operationAmount"],["amount"]
-    currency = transaction["operationAmount"], ["currency"], ["code"]
-    currency_rub = "RUB"
-    if currency != "RUB":
-        url = f'https://api.apilayer.com/exchangerates_data/convert?to={currency_rub}from={currency}from&amount={amount}'
-        payload = {}
-        headers = {"apikey": API_KEY}
-        response = requests.request("GET", url, headers=headers)
-        status_code = response.status_code
-        result = response.json()
-        if status_code == 200:
-            return result ["result"]
-        else:
-            return f'Запрос не был успешным. Ошибка {status_code}'
-    else:
-        return amount
-
+def money_transaction(transaction: dict, code: str) -> [float, str]:
+    try:
+        results = []
+        for trade in transaction:
+            if trade.get("operationAmount") is not None:
+                amount = float(trade.get("operationAmount").get("amount"))
+                currency = trade.get("operationAmount").get("currency").get("code")
+                if currency != "RUB":
+                    url = f'https://api.apilayer.com/exchangerates_data/convert?to={currency_rub}from={currency}from&amount={amount}'
+                    payload = {}
+                    headers = {"apikey": API_KEY}
+                    response = requests.request("GET", url, headers=headers, data=payload)
+                    status_code = response.status_code
+                    if status_code == 200:
+                        result = response.json().get("result")
+                        results.append(result)
+                    else:
+                        return f"Запрос не удался, код ошибки: {status_code}"
+                elif currency == code:
+                    results.append(amount)
+            print(results)
+    except Exception as error:
+        print("Произошла ошибка", error)
+        raise Exception
