@@ -24,3 +24,4 @@ def money_transaction(transaction: dict) -> [float, str]:
             return f'Запрос не был успешным. Ошибка {status_code}'
     else:
         return amount
+
