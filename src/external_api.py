@@ -3,14 +3,14 @@ import os
 import requests
 from dotenv import load_dotenv
 from config import PATH
-# path_to_file = PATH /"data" /"operation.json"
+path_to_file = PATH /"data" /"operation.json"
 
 load_dotenv('.env')
 
 API_KEY = os.getenv('APY_KEY')
 currency_rub = "RUB"
 
-with open('C:/Users/Evgeni/PycharmProjects/Home_work/data/operations.json', encoding='utf-8') as f:
+with open(path_to_file, encoding='utf-8') as f:
     transactions = json.load(f)
 
 
@@ -34,7 +34,7 @@ def money_transaction(transaction: dict, code: str) -> [float, str]:
                         return f"Запрос не удался, код ошибки: {status_code}"
                 elif currency == code:
                     results.append(amount)
-            print(results)
+            return results
     except Exception as error:
         print("Произошла ошибка", error)
         raise Exception
