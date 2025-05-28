@@ -3,7 +3,7 @@ from typing import Any
 import pytest
 import tempfile
 
-from src.utlis import read_json_file
+from src.utils import read_json_file
 
 
 def test_read_json_file():
@@ -14,9 +14,9 @@ def test_read_json_file():
         assert result == []
 
 
-def test_read_file(test_utlis_1: Any) -> None:
+def test_read_file(test_utils_1: Any) -> None:
     """Тест для функции чтения json файла"""
-    assert read_json_file(test_utlis_1) == [
+    assert read_json_file(test_utils_1) == [
         {
             "id": 441945886,
             "state": "EXECUTED",

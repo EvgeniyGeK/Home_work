@@ -3,18 +3,20 @@ import os
 import requests
 from dotenv import load_dotenv
 from config import PATH
-path_to_file = PATH /"data" /"operation.json"
 
-load_dotenv('.env')
+path_to_file = PATH / "data" / "operations.json"
 
-API_KEY = os.getenv('APY_KEY')
+load_dotenv(".env")
+
+API_KEY = os.getenv("API_KEY")
 
 
-with open(path_to_file, encoding='utf-8') as f:
+with open(path_to_file, encoding="utf-8") as f:
     transactions = json.load(f)
 
 
 def money_transaction(transaction: dict, code: str) -> [float, str]:
+    """Функция, которая принимает на вход транзакцию и возвращает сумму транзакции"""
     try:
         results = []
         for trade in transaction:
