@@ -8,7 +8,7 @@ path_to_file = PATH /"data" /"operation.json"
 load_dotenv('.env')
 
 API_KEY = os.getenv('APY_KEY')
-currency_rub = "RUB"
+
 
 with open(path_to_file, encoding='utf-8') as f:
     transactions = json.load(f)
@@ -22,7 +22,7 @@ def money_transaction(transaction: dict, code: str) -> [float, str]:
                 amount = float(trade.get("operationAmount").get("amount"))
                 currency = trade.get("operationAmount").get("currency").get("code")
                 if currency != "RUB":
-                    url = f'https://api.apilayer.com/exchangerates_data/convert?to={currency_rub}from={currency}from&amount={amount}'
+                    url = f'https://api.apilayer.com/exchangerates_data/convert?to={"RUB"}&from={currency}&from&amount={amount}'
                     payload = {}
                     headers = {"apikey": API_KEY}
                     response = requests.request("GET", url, headers=headers, data=payload)
@@ -34,7 +34,8 @@ def money_transaction(transaction: dict, code: str) -> [float, str]:
                         return f"Запрос не удался, код ошибки: {status_code}"
                 elif currency == code:
                     results.append(amount)
-            return results
+
     except Exception as error:
         print("Произошла ошибка", error)
         raise Exception
+    return results
