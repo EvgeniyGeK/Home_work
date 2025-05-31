@@ -15,7 +15,7 @@ with open(path_to_file, encoding="utf-8") as f:
     transactions = json.load(f)
 
 
-def money_transaction(transaction: dict, code: str) -> [float, str]:
+def money_transaction(transaction: list[dict], code: str) -> [float, str]:
     """Функция, которая принимает на вход транзакцию и возвращает сумму транзакции"""
     try:
         results = []
