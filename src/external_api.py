@@ -14,7 +14,6 @@ API_KEY = os.getenv("API_KEY")
 # with open(path_to_file, encoding="utf-8") as f:
 
 
-
 def money_transaction(transaction: dict) -> float | str:
     """Функция, которая принимает на вход транзакцию и возвращает сумму транзакции"""
     try:
@@ -23,7 +22,9 @@ def money_transaction(transaction: dict) -> float | str:
             amount = float(transaction.get("operationAmount").get("amount"))
             currency = transaction.get("operationAmount").get("currency").get("code")
             if currency != "RUB":
-                url = f'https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={currency}&from&amount={amount}'
+                url = (
+                    f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={currency}&from&amount={amount}"
+                )
                 headers = {"apikey": API_KEY}
                 response = requests.request("GET", url, headers=headers)
                 status_code = response.status_code
@@ -38,5 +39,3 @@ def money_transaction(transaction: dict) -> float | str:
     except Exception as error:
         print("Произошла ошибка", error)
         raise Exception
-
-

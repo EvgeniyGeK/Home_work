@@ -42,8 +42,9 @@ def test_read_file(test_utils_1: Any) -> None:
 @patch("builtins.open")
 @patch("json.load")
 def test_read_file_path(mock_load, mock_open):
+    """Тест для функции чтения json файла"""
     mock_file = mock.MagicMock()
     mock_open.return_value.__enter__.return_value = mock_file
-    mock_load.return_value = [{'test': 'test'}]
-    assert read_json_file('fake_path.json') == [{'test': 'test'}]
+    mock_load.return_value = [{"test": "test"}]
+    assert read_json_file("fake_path.json") == [{"test": "test"}]
     mock_load.assert_called_with(mock_file)
