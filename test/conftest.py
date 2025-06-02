@@ -134,4 +134,4 @@ def test_transaction_descriptions_fix():
 @pytest.fixture
 def test_utils_1():
     """Тест для функции чтения json файла"""
-    return f'../test/test.json'
+    return f'C:/Users/Evgeni/PycharmProjects/Home_work/test/test.json'
