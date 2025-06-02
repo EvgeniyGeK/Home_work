@@ -1,5 +1,6 @@
 from typing import Any
-
+from unittest import mock
+from unittest.mock import patch
 import pytest
 import tempfile
 
@@ -36,3 +37,13 @@ def test_read_file(test_utils_1: Any) -> None:
             "to": "Счет 35383033474447895560",
         },
     ]
+
+
+@patch("builtins.open")
+@patch("json.load")
+def test_read_file_path(mock_load, mock_open):
+    mock_file = mock.MagicMock()
+    mock_open.return_value.__enter__.return_value = mock_file
+    mock_load.return_value = [{'test': 'test'}]
+    assert read_json_file('fake_path.json') == [{'test': 'test'}]
+    mock_load.assert_called_with(mock_file)

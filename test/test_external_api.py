@@ -1,9 +1,7 @@
-import os
-import requests
 from unittest.mock import patch, MagicMock
 import pytest
 from src import external_api
-import json
+
 
 
 @patch("requests.request")
