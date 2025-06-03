@@ -11,7 +11,7 @@ load_dotenv(PATH / ".env")
 API_KEY = os.getenv("API_KEY")
 
 
-# with open(path_to_file, encoding="utf-8") as f:
+
 
 
 def money_transaction(transaction: dict) -> float | str:
