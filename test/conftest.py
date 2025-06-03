@@ -129,3 +129,9 @@ def test_transaction_descriptions_fix():
             "from": "Счет 44812258784861134719",
             "to": "Счет 74489636417521191160"
         }])
+
+
+@pytest.fixture
+def test_utils_1():
+    """Тест для функции чтения json файла"""
+    return f'C:/Users/Evgeni/PycharmProjects/Home_work/test/test.json'
