@@ -5,6 +5,8 @@ from loggers import get_logger
 logger = get_logger(name=__file__)
 
 logger.info(f"Начало работы функции read_json_file")
+
+
 def read_json_file(file_path: str) -> [dict, str]:
     """Функция чтения json файла"""
     try:
