@@ -15,13 +15,15 @@ def read_exel(path_file: str) -> list:
 
 def read_csv(path_to_file: str) -> list:
     """Функция читает csv файлов и преобразует данные в список словарей"""
-    csv_dict = []
+
     try:
+        csv_dict = []
         with open(path_to_file, encoding='utf-8') as file:
             csv_data = csv.DictReader(file, delimiter=';')
             for row in csv_data:
                 csv_dict.append(row)
-                return csv_dict
+            return csv_dict
     except Exception as e:
         Exception(f'Произошла ошибка: {e}')
         return []
+
