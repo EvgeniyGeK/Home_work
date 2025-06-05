@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def read_exel(path_file: str) -> list:
-    """Функция читает exel файл и преобразует данные в список словарей"""
+    """Функция читает exel файлов и преобразует данные в список словарей"""
     try:
         exel_data = pd.read_excel(path_file).to_dict(orient='records')
         return exel_data
@@ -14,6 +14,7 @@ def read_exel(path_file: str) -> list:
 
 
 def read_csv(path_to_file: str) -> list:
+    """Функция читает csv файлов и преобразует данные в список словарей"""
     csv_dict = []
     try:
         with open(path_to_file, encoding='utf-8') as file:
