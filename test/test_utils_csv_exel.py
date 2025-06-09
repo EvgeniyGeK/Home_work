@@ -1,3 +1,4 @@
+import io
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -47,5 +48,29 @@ class TestReadExel(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    unittest.main()
+
+
+class TestReadCsv(unittest.TestCase):
+
+    @patch('builtins.open')
+    def test_read_csv_success(self, mock_open):
+        """Тест на чтение csv файлов функцией read_csv"""
+        fake_csv_content = u"""Name;Age\nJohn;30\nJane;25"""
+        mock_open.return_value.__enter__.return_value = io.StringIO(fake_csv_content)
+        path_to_file = 'fake.csv'
+        result = read_csv(path_to_file)
+        expected_result = [{"Name": "John", "Age": "30"}, {"Name": "Jane", "Age": "25"}]
+        self.assertEqual(result, expected_result)
+
+    @patch('builtins.open')
+    def test_read_csv_error(self, mock_open):
+        """Тест на ошибку функцией read_csv"""
+        mock_open.side_effect = IOError("File not found")
+        path_to_file = 'invalid_path.csv'
+        result = read_csv(path_to_file)
+        self.assertEqual(result, [])
+
+if __name__ == "__main__":
     unittest.main()
 
