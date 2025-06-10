@@ -3,6 +3,7 @@ import csv
 import pandas as pd
 
 
+
 def read_exel(path_file: str) -> list:
     """Функция читает exel файлов и преобразует данные в список словарей"""
     try:
