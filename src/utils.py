@@ -1,10 +1,10 @@
 import json
-from loggers import get_logger
 
+from loggers import get_logger
 
 logger = get_logger(name=__file__)
 
-logger.info(f"Начало работы функции read_json_file")
+logger.info("Начало работы функции read_json_file")
 
 
 def read_json_file(file_path: str) -> [dict, str]:
@@ -12,7 +12,7 @@ def read_json_file(file_path: str) -> [dict, str]:
     try:
         with open(file_path, encoding="utf-8") as f:
             reading_dict = json.load(f)
-        logger.info(f"Функция read_json_file успешно завершила свою работу")
+        logger.info("Функция read_json_file успешно завершила свою работу")
         return reading_dict
     except Exception as e:
         # (FileNotFoundError, json.JSONDecodeError, TypeError, ValueError, KeyError):

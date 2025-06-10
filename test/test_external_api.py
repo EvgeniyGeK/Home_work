@@ -1,5 +1,5 @@
-from unittest.mock import patch, MagicMock
-import pytest
+from unittest.mock import patch
+
 from src import external_api
 
 

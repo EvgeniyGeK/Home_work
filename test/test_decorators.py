@@ -40,6 +40,7 @@ def test_log_sum(x, y, expected: int) -> [int]:
     sum_result = x + y
     assert sum_result == expected
 
+
 @log(filename="my_log.txt")
 def test_logging_error():
     """Тестирование исключений"""
