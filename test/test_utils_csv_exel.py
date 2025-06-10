@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 import pandas as pd
 
-from src.utils_csv_exel import read_exel, read_csv
+from src.utils_csv_exel import read_csv, read_exel
 
 
 def test_read_exel():

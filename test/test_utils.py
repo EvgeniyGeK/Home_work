@@ -1,8 +1,7 @@
+import tempfile
 from typing import Any
 from unittest import mock
 from unittest.mock import patch
-import pytest
-import tempfile
 
 from src.utils import read_json_file
 

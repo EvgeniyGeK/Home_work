@@ -1,7 +1,8 @@
-import json
 import os
+
 import requests
 from dotenv import load_dotenv
+
 from config import PATH
 
 path_to_file = PATH / "data" / "operations.json"
@@ -9,9 +10,6 @@ path_to_file = PATH / "data" / "operations.json"
 load_dotenv(PATH / ".env")
 
 API_KEY = os.getenv("API_KEY")
-
-
-
 
 
 def money_transaction(transaction: dict) -> float | str:
