@@ -2,20 +2,25 @@ import re
 from collections import Counter
 
 
-def process_bank_search(transact_data: dict, user_request: str) -> list[dict[re]]:
+def process_bank_search(transact_data: list[dict], user_request: str) -> list:
     """Функция для поиска в списке словарей операций по строке статус операции"""
     found_dict = []
 
-    for transaction in transact_data:
-        if re.search(user_request, transaction["state"], flags=re.IGNORECASE):
-            found_dict.append(transaction)
-        return found_dict
+    operation_found = [
+        transaction
+        for transaction in transact_data
+        if re.search(user_request, transaction["state"], flags=re.IGNORECASE)
+    ]
+    found_dict.append(operation_found)
+
+    return found_dict
 
 
 def process_bank_operations(data: list[dict], categories: list[str]) -> dict:
     """Функция для подсчета количества банковских операций определенного типа."""
     script_dict = []
     pattern = re.compile(str(categories))
+
     transaction_find = [i for i in data if re.search(pattern, i["description"])]
     script_dict.append(transaction_find)
     description = [i.get("description") for i in data if i.get("description") in categories]
@@ -25,7 +30,7 @@ def process_bank_operations(data: list[dict], categories: list[str]) -> dict:
 
 
 if __name__ == "__main__":
-    process_bank_operations(
+    process_bank_search(
         [
             {
                 "id": 650703.0,
@@ -61,5 +66,5 @@ if __name__ == "__main__":
                 "description": "Перевод организации",
             },
         ],
-        "Перевод организации",
+        "Executed",
     )
