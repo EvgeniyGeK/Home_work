@@ -1,5 +1,5 @@
 import re
-
+from collections import Counter
 
 
 def process_bank_search(transact_data: dict, user_request: str) -> list[dict[re]]:
@@ -12,15 +12,19 @@ def process_bank_search(transact_data: dict, user_request: str) -> list[dict[re]
         return found_dict
 
 
-def process_bank_operations(data: list[dict], categories: list) -> dict:
+def process_bank_operations(data: list[dict], categories: list[str]) -> dict:
+    """Функция для подсчета количества банковских операций определенного типа."""
     script_dict = []
-    new_category = str(categories)
-    print(new_category)
+    pattern = re.compile(str(categories))
+    transaction_find = [i for i in data if re.search(pattern, i["description"])]
+    script_dict.append(transaction_find)
+    description = [i.get("description") for i in data if i.get("description") in categories]
+    count_description = Counter(description)
 
-    for i in data:
-        if re.search(new_category, i["description"], flags=re.IGNORECASE):
-            script_dict.append(i)
-    print(script_dict)
+
+    return count_description
+
+
 
 
 if __name__ == "__main__":
@@ -55,7 +59,7 @@ if __name__ == "__main__":
         "currency_code": "TZS",
         "from": "Visa 1959232722494097",
         "to": "Visa 6804119550473710",
-        "description": "Перевод с карты на счет",
-    }],[" ", "Перевод с карты на карту"])
+        "description": "Перевод организации",
+    }],"Перевод организации")
 
 
