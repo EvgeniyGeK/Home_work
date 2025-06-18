@@ -18,19 +18,20 @@ def process_bank_search(transact_data: list[dict], user_request: str) -> list:
 
 def process_bank_operations(data: list[dict], categories: list[str]) -> dict:
     """Функция для подсчета количества банковских операций определенного типа."""
-    script_dict = []
-    pattern = re.compile(str(categories))
 
-    transaction_find = [i for i in data if re.search(pattern, i["description"])]
-    script_dict.append(transaction_find)
-    description = [i.get("description") for i in data if i.get("description") in categories]
-    count_description = Counter(description)
+    count_description = {}
+    for x in categories:
+        description = [i.get("description") for i in data if i.get("description") in categories]
+        count_description = Counter(description)
 
     return count_description
+    # print(count_description)
+
+
 
 
 if __name__ == "__main__":
-    process_bank_search(
+    process_bank_operations(
         [
             {
                 "id": 650703.0,
@@ -63,8 +64,8 @@ if __name__ == "__main__":
                 "currency_code": "TZS",
                 "from": "Visa 1959232722494097",
                 "to": "Visa 6804119550473710",
-                "description": "Перевод организации",
+                "description": "Перевод с карты на счет",
             },
         ],
-        "Executed",
+        ["Перевод организации", "Перевод с карты на счет", "Перевод с карты на карту"]
     )

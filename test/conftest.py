@@ -161,7 +161,7 @@ def test_search_str():
                 "currency_code": "TZS",
                 "from": "Visa 1959232722494097",
                 "to": "Visa 6804119550473710",
-                "description": "Перевод организации",
+                "description": "Перевод с карты на карту",
             }
         ]
 
@@ -176,3 +176,7 @@ def test_search_bar():
 def test_search_user_request():
     """Фикстура пользовательского запроса для test_search_of_dict"""
     return str("canceled")
+
+@pytest.fixture
+def test_process_bank_operations():
+    return ["Перевод организации", "Перевод с карты на счет", "Перевод с карты на карту"]
