@@ -127,9 +127,9 @@ def test_utils_1():
     return "C:/Users/Evgeni/PycharmProjects/Home_work/test/test.json"
 
 @pytest.fixture
-def test_process_bank_search():
+def test_search_str():
     """Тест функции для поиска в списке словарей операций по строке статус операции"""
-    return ([
+    return [
             {
                 "id": 650703.0,
                 "state": "EXECUTED",
@@ -162,5 +162,10 @@ def test_process_bank_search():
                 "from": "Visa 1959232722494097",
                 "to": "Visa 6804119550473710",
                 "description": "Перевод организации",
-            },
-        ], "EXECUTED")
+            }
+        ]
+
+
+@pytest.fixture
+def test_search_bar():
+    return "EXECUTED"

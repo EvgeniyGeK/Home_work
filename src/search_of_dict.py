@@ -4,16 +4,16 @@ from collections import Counter
 
 def process_bank_search(transact_data: list[dict], user_request: str) -> list:
     """Функция для поиска в списке словарей операций по строке статус операции"""
-    found_dict = []
 
     operation_found = [
         transaction
         for transaction in transact_data
         if re.search(user_request, transaction["state"], flags=re.IGNORECASE)
     ]
-    found_dict.append(operation_found)
 
-    return found_dict
+
+    return operation_found
+
 
 
 def process_bank_operations(data: list[dict], categories: list[str]) -> dict:
