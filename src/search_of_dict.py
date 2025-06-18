@@ -8,7 +8,7 @@ def process_bank_search(transact_data: list[dict], user_request: str) -> list:
     operation_found = [
         transaction
         for transaction in transact_data
-        if re.search(user_request, transaction["state"], flags=re.IGNORECASE)
+        if re.search(user_request, transaction['state'], flags=re.IGNORECASE)
     ]
 
 
