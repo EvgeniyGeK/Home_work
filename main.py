@@ -19,11 +19,19 @@ def main():
             print(x)
             user_filter_status = input(f"Для обработки выбран JSON-файл.\n" 
             "Введите статус, по которому необходимо выполнить фильтрацию.\n"
-                                       "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
+            "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
+            user_filter_status = user_filter_status.upper()
+            if user_filter_status == "EXECUTED" or user_filter_status == "CANCELED" or user_filter_status == "PENDING":
+                filter_by_status = filter_by_state(x, user_filter_status)
+                print(filter_by_status)
+            else:
+                print(f"Статус операции {user_filter_status} недоступен.\n"),
+                user_filter_status = input  (f"Введите статус, по которому необходимо выполнить фильтрацию.\n"
+                      f"Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
 
-            filter_by_status = filter_by_state(x, user_filter_status)
 
-            print(filter_by_status)
+
+
 
 
     except ():
