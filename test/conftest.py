@@ -168,4 +168,11 @@ def test_search_str():
 
 @pytest.fixture
 def test_search_bar():
+    """Фикстура пользовательского запроса для test_search_of_dict"""
     return "EXECUTED"
+
+
+@pytest.fixture
+def test_search_user_request():
+    """Фикстура пользовательского запроса для test_search_of_dict"""
+    return str("canceled")

@@ -31,8 +31,20 @@ def test_get_process_bank_search(test_search_str, test_search_bar):
                 "description": "Перевод с карты на счет",
             }]
 
-
-
+def test_user_search(test_search_str, test_search_user_request):
+    """Тест функции поиска по строке в банковских транзакциях в зависимости от регистра ввода"""
+    assert process_bank_search(test_search_str, test_search_user_request) == [{
+                "id": 593027.0,
+                "state": "CANCELED",
+                "date": "2023-07-22T05:02:01Z",
+                "amount": 30368.0,
+                "currency_name": "Shilling",
+                "currency_code": "TZS",
+                "from": "Visa 1959232722494097",
+                "to": "Visa 6804119550473710",
+                "description": "Перевод организации",
+            }
+        ]
 
 
 
