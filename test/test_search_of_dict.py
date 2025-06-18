@@ -42,7 +42,7 @@ def test_user_search(test_search_str, test_search_user_request):
                 "currency_code": "TZS",
                 "from": "Visa 1959232722494097",
                 "to": "Visa 6804119550473710",
-                "description": "Перевод организации",
+                "description": "Перевод с карты на карту",
             }
         ]
 
