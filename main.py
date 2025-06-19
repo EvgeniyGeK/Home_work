@@ -22,24 +22,23 @@ def main():
             "Введите статус, по которому необходимо выполнить фильтрацию.\n"
             "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
             # user_filter_status = user_filter_status.upper()
-            for i in x:
-               filter_by_status = []
-               if user_filter_status.upper() == "EXECUTED" or user_filter_status.upper() == "CANCELED" or user_filter_status.upper() == "PENDING":
-                    filter_dc = filter_by_state(x, user_filter_status.upper())
-                    filter_by_status.append(filter_dc)
-                    print(filter_by_status)
-+
+            # filter_by_status = []
+            if user_filter_status.upper() == "EXECUTED" or user_filter_status.upper() == "CANCELED" or user_filter_status.upper() == "PENDING":
+                filter_dc = filter_by_state(x, user_filter_status.upper())
+                filter_by_status.append(filter_dc)
+                print(filter_by_status)
 
-               else:
-                   while True:
 
-                          print(f"Статус операции {user_filter_status} недоступен.\n"),
-                          user_filter_status = input(f"Введите статус, по которому необходимо выполнить фильтрацию.\n"
+            else:
+                while True:
+
+                    print(f"Статус операции {user_filter_status} недоступен.\n"),
+                    user_filter_status = input(f"Введите статус, по которому необходимо выполнить фильтрацию.\n"
                           f"Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
 
-                          break
-                   filter_by_status = filter_by_state(x, user_filter_status.upper())
-                   print(filter_by_status)
+                    break
+                filter_by_status = filter_by_state(x, user_filter_status.upper())
+                print(filter_by_status)
             user_sorted_day = input("Отсортировать операции по дате? Да/Нет\n")
             user_sort_rank = input("Отсортировать по возрастанию (1) или по убыванию (2)?")
             if user_sorted_day.lower() =="Да" and user_sort_rank == "1":
