@@ -1,5 +1,5 @@
 from config import PATH
-from src.processing import filter_by_state
+from src.processing import filter_by_state, sort_by_date
 from src.search_of_dict import process_bank_search
 from src.utils import read_json_file
 
@@ -17,31 +17,42 @@ def main():
         user_point = input("Выберите необходимый пункт меню: ")
         if user_point == "1":
             x = read_json_file(PATH / "data" / "operations.json")
-            # print(x)
+            print(x)
             user_filter_status = input(f"Для обработки выбран JSON-файл.\n" 
             "Введите статус, по которому необходимо выполнить фильтрацию.\n"
             "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
             # user_filter_status = user_filter_status.upper()
-            if user_filter_status.upper() == "EXECUTED" or user_filter_status.upper() == "CANCELED" or user_filter_status.upper() == "PENDING":
-                filter_by_status = filter_by_state(x, user_filter_status.upper())
-                print(filter_by_status)
+            for i in x:
+               filter_by_status = []
+               if user_filter_status.upper() == "EXECUTED" or user_filter_status.upper() == "CANCELED" or user_filter_status.upper() == "PENDING":
+                    filter_dc = filter_by_state(x, user_filter_status.upper())
+                    filter_by_status.append(filter_dc)
+                    print(filter_by_status)
++
 
-            else:
-                while True:
+               else:
+                   while True:
 
-                    print(f"Статус операции {user_filter_status} недоступен.\n"),
-                    user_filter_status = input(f"Введите статус, по которому необходимо выполнить фильтрацию.\n"
+                          print(f"Статус операции {user_filter_status} недоступен.\n"),
+                          user_filter_status = input(f"Введите статус, по которому необходимо выполнить фильтрацию.\n"
                           f"Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
 
-                    break
-                filter_by_status = filter_by_state(x, user_filter_status.upper())
-                print(filter_by_status)
+                          break
+                   filter_by_status = filter_by_state(x, user_filter_status.upper())
+                   print(filter_by_status)
+            user_sorted_day = input("Отсортировать операции по дате? Да/Нет\n")
+            user_sort_rank = input("Отсортировать по возрастанию (1) или по убыванию (2)?")
+            if user_sorted_day.lower() =="Да" and user_sort_rank == "1":
+                sort_by_status = sort_by_date(filter_by_status)
+                print(sort_by_status)
 
 
 
 
 
-            # else:
+
+
+
 
 
 
