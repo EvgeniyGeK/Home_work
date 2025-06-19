@@ -6,6 +6,7 @@ from src.utils import read_json_file
 
 def main():
     # while True:
+    filter_by_status = []
     try:
         print (f"Привет! Добро пожаловать в программу работы с банковскими транзакциями.\n")
 
@@ -16,18 +17,32 @@ def main():
         user_point = input("Выберите необходимый пункт меню: ")
         if user_point == "1":
             x = read_json_file(PATH / "data" / "operations.json")
-            print(x)
+            # print(x)
             user_filter_status = input(f"Для обработки выбран JSON-файл.\n" 
             "Введите статус, по которому необходимо выполнить фильтрацию.\n"
             "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
-            user_filter_status = user_filter_status.upper()
-            if user_filter_status == "EXECUTED" or user_filter_status == "CANCELED" or user_filter_status == "PENDING":
-                filter_by_status = filter_by_state(x, user_filter_status)
+            # user_filter_status = user_filter_status.upper()
+            if user_filter_status.upper() == "EXECUTED" or user_filter_status.upper() == "CANCELED" or user_filter_status.upper() == "PENDING":
+                filter_by_status = filter_by_state(x, user_filter_status.upper())
                 print(filter_by_status)
+
             else:
-                print(f"Статус операции {user_filter_status} недоступен.\n"),
-                user_filter_status = input  (f"Введите статус, по которому необходимо выполнить фильтрацию.\n"
-                      f"Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
+                while True:
+
+                    print(f"Статус операции {user_filter_status} недоступен.\n"),
+                    user_filter_status = input(f"Введите статус, по которому необходимо выполнить фильтрацию.\n"
+                          f"Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
+
+                    break
+                filter_by_status = filter_by_state(x, user_filter_status.upper())
+                print(filter_by_status)
+
+
+
+
+
+            # else:
+
 
 
 

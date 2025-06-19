@@ -7,7 +7,7 @@ def filter_by_state(user_state: list[dict], state: str) -> [list, str]:
             return "Ключ не найден"
         elif key.get("state") == state:
             filter_list.append(key)
-    return filter_list
+            return filter_list
 
 
 def sort_by_date(user_date: list[dict], ascending: bool = True) -> list[dict]:
