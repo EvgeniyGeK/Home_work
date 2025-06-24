@@ -1,11 +1,14 @@
 from config import PATH
+from sorted_dict_main import sorted_dict
 from src.processing import filter_by_state, sort_by_date
 from src.search_of_dict import process_bank_search
 from src.utils import read_json_file
+from src.utils_csv_exel import read_csv, read_exel
 
 
 def main():
     # while True:
+    selected_file = []
     filter_by_status = []
     try:
         print (f"Привет! Добро пожаловать в программу работы с банковскими транзакциями.\n")
@@ -16,34 +19,42 @@ def main():
         print("4. выйти из программы")
         user_point = input("Выберите необходимый пункт меню: ")
         if user_point == "1":
-            x = read_json_file(PATH / "data" / "operations.json")
-            print(x)
-            user_filter_status = input(f"Для обработки выбран JSON-файл.\n" 
-            "Введите статус, по которому необходимо выполнить фильтрацию.\n"
-            "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
-            # user_filter_status = user_filter_status.upper()
-            # filter_by_status = []
-            if user_filter_status.upper() == "EXECUTED" or user_filter_status.upper() == "CANCELED" or user_filter_status.upper() == "PENDING":
-                filter_dc = filter_by_state(x, user_filter_status.upper())
-                filter_by_status.append(filter_dc)
-                print(filter_by_status)
+            selected_file = read_json_file(PATH / "data" / "operations.json")
+            print(f"Для обработки выбран JSON-файл.\n", selected_file)
 
 
-            else:
-                while True:
+        elif user_point == "2":
+            selected_file = read_csv(PATH / "data" / "transactions.csv")
+            print(f"Для обработки выбран CSV-файл.\n", selected_file)
 
-                    print(f"Статус операции {user_filter_status} недоступен.\n"),
-                    user_filter_status = input(f"Введите статус, по которому необходимо выполнить фильтрацию.\n"
-                          f"Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
+        elif user_point == "3":
+            selected_file = read_exel(PATH / "data" / "transactions_excel.xlsx")
+            print(f"Для обработки выбран EXCEL-файл.\n", selected_file)
 
-                    break
-                filter_by_status = filter_by_state(x, user_filter_status.upper())
-                print(filter_by_status)
-            user_sorted_day = input("Отсортировать операции по дате? Да/Нет\n")
-            user_sort_rank = input("Отсортировать по возрастанию (1) или по убыванию (2)?")
-            if user_sorted_day.lower() =="Да" and user_sort_rank == "1":
-                sort_by_status = sort_by_date(filter_by_status)
-                print(sort_by_status)
+        user_filter_status = (input("Введите статус, по которому необходимо выполнить фильтрацию.\n"
+            "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n"))
+
+        if user_filter_status.upper() == "EXECUTED" or user_filter_status.upper() == "CANCELED" or user_filter_status.upper() == "PENDING":
+            filter_dc = filter_by_state(selected_file, user_filter_status.upper())
+            filter_by_status.append(filter_dc)
+            print(filter_by_status)
+
+
+        else:
+            while True:
+
+                print(f"Статус операции {user_filter_status} недоступен.\n"),
+                user_filter_status = input(f"Введите статус, по которому необходимо выполнить фильтрацию.\n"
+                    f"Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n")
+
+                break
+            filter_by_status = filter_by_state(selected_file, user_filter_status.upper())
+            print(filter_by_status)
+        print(sorted_dict(filter_by_status))
+
+
+
+
 
 
 

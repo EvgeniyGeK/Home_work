@@ -10,8 +10,8 @@ def filter_by_state(user_state: list[dict], state: str) -> [list, str]:
     return filter_list
 
 
-def sort_by_date(user_date: list[dict], ascending: bool = True) -> list[dict]:
+def sort_by_date(user_date: list[dict], ascending: bool) -> list[dict]:
     """Функция сортировки по дате"""
 
     valid_dict = [i for i in user_date if "date" in i]
-    return sorted(valid_dict, key=lambda x: x.get("date"), reverse=ascending)
+    return sorted(valid_dict, key=lambda x: x.get("date"), reverse=not ascending)
