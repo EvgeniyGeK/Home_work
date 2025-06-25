@@ -23,7 +23,7 @@ def main():
         if user_point == "4":
             print("Программа завершена.")
             exit()
-        selected_file = list
+        selected_file = None
         if user_point == "1":
             selected_file = read_json_file(PATH / "data" / "operations.json")
             print(f"Для обработки выбран JSON-файл.\n", selected_file)
@@ -76,8 +76,11 @@ def main():
 
 
 
-    except ():
-        print(f"выбран несуществующий пункт меню")
+    except Exception as e:
+        print(e, f"выбран несуществующий пункт меню")
+        exit()
+
+
 
 
 
