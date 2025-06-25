@@ -1,15 +1,17 @@
+
+
 from config import PATH
 from sorted_dict_main import sorted_dict
-from src.processing import filter_by_state, sort_by_date
-from src.search_of_dict import process_bank_search
+from src.processing import filter_by_state
+
 from src.utils import read_json_file
 from src.utils_csv_exel import read_csv, read_exel
 
 
 def main():
     # while True:
-    selected_file = []
-    filter_by_status = []
+
+
     try:
         print (f"Привет! Добро пожаловать в программу работы с банковскими транзакциями.\n")
 
@@ -18,6 +20,10 @@ def main():
         print("3. Получить информацию о транзакциях из XLSX-файла.")
         print("4. выйти из программы")
         user_point = input("Выберите необходимый пункт меню: ")
+        if user_point == "4":
+            print("Программа завершена.")
+            exit()
+        selected_file = list
         if user_point == "1":
             selected_file = read_json_file(PATH / "data" / "operations.json")
             print(f"Для обработки выбран JSON-файл.\n", selected_file)
@@ -34,9 +40,9 @@ def main():
         user_filter_status = (input("Введите статус, по которому необходимо выполнить фильтрацию.\n"
             "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n"))
 
-        if user_filter_status.upper() == "EXECUTED" or user_filter_status.upper() == "CANCELED" or user_filter_status.upper() == "PENDING":
-            filter_dc = filter_by_state(selected_file, user_filter_status.upper())
-            filter_by_status.append(filter_dc)
+        if user_filter_status.upper() in ["EXECUTED", "CANCELED", "PENDING"] and selected_file is not None:
+            # filter_dc = filter_by_state(selected_file, user_filter_status.upper())
+            filter_by_status = filter_by_state(selected_file, user_filter_status.upper())
             print(filter_by_status)
 
 

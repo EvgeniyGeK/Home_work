@@ -26,6 +26,6 @@ def sorted_dict(filter_by_status):
         else:
             sorted_result = sort_by_date(filter_by_status, ascending=False)
 
-        print(sorted_result)
+        return sorted_result
     else:
-        print(filter_by_status)
+        return filter_by_status

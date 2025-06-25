@@ -1,12 +1,12 @@
-def filter_by_state(user_state: list[dict], state: str) -> [list, str]:
+def filter_by_state(user_state: list[dict], state: str) -> list:
     """Функция сортировки словарей по значению ключа"""
 
     filter_list = []
-    for key in user_state:
-        if key not in user_state:
-            return "Ключ не найден"
-        elif key.get("state") == state:
-            filter_list.append(key)
+    for transaction in user_state:
+        if 'state' not in transaction:
+            continue  # пропускаем запись, если нет нужного поля
+        elif transaction['state'] == state:
+            filter_list.append(transaction)
     return filter_list
 
 
