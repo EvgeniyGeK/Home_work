@@ -4,6 +4,7 @@ from config import PATH
 from sorted_dict_main import sorted_dict
 from src.generators import filter_by_currency
 from src.processing import filter_by_state
+from src.search_of_dict import process_bank_operations
 
 from src.utils import read_json_file
 from src.utils_csv_exel import read_csv, read_exel
@@ -58,7 +59,7 @@ def main():
             filter_by_status = filter_by_state(selected_file, user_filter_status.upper())
             # print(filter_by_status)
         sorted_transactions = sorted_dict(filter_by_status)
-        print(sorted_transactions)
+
         user_currency = input(f"Выводить только рублевые транзакции? Да/Нет\n").upper()
         if user_currency.startswith("ДА"):
             ruble_transactions = list(filter_by_currency(sorted_transactions, "RUB"))
@@ -69,6 +70,12 @@ def main():
         else:
             output_list = sorted_transactions
             print(output_list)
+
+        user_description = input(f"Отфильтровать список транзакций по определенному слову в описании? Да/Нет\n").upper()
+        if user_description.startswith("ДА"):
+            user_filter_description = list(input(f"Введите описание операции по которой необходимо выполнить фильтрацию\n").upper())
+            filter_by_word = process_bank_operations(output_list, user_filter_description)
+            print(filter_by_word)
 
 
 
