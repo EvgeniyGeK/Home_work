@@ -2,6 +2,7 @@
 
 from config import PATH
 from sorted_dict_main import sorted_dict
+from src.generators import filter_by_currency
 from src.processing import filter_by_state
 
 from src.utils import read_json_file
@@ -26,24 +27,24 @@ def main():
         selected_file = None
         if user_point == "1":
             selected_file = read_json_file(PATH / "data" / "operations.json")
-            print(f"Для обработки выбран JSON-файл.\n", selected_file)
+            print(f"Для обработки выбран JSON-файл.\n")
 
 
         elif user_point == "2":
             selected_file = read_csv(PATH / "data" / "transactions.csv")
-            print(f"Для обработки выбран CSV-файл.\n", selected_file)
+            print(f"Для обработки выбран CSV-файл.\n")
 
         elif user_point == "3":
             selected_file = read_exel(PATH / "data" / "transactions_excel.xlsx")
-            print(f"Для обработки выбран EXCEL-файл.\n", selected_file)
+            print(f"Для обработки выбран EXCEL-файл.\n")
 
-        user_filter_status = (input("Введите статус, по которому необходимо выполнить фильтрацию.\n"
-            "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n"))
+        user_filter_status = input("Введите статус, по которому необходимо выполнить фильтрацию.\n"
+            "Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING.\n").upper()
 
-        if user_filter_status.upper() in ["EXECUTED", "CANCELED", "PENDING"] and selected_file is not None:
-            # filter_dc = filter_by_state(selected_file, user_filter_status.upper())
+        if user_filter_status in ["EXECUTED", "CANCELED", "PENDING"] and selected_file is not None:
+
             filter_by_status = filter_by_state(selected_file, user_filter_status.upper())
-            print(filter_by_status)
+            print(f"Операции отфильтрованы по статусу {user_filter_status}")
 
 
         else:
@@ -55,8 +56,21 @@ def main():
 
                 break
             filter_by_status = filter_by_state(selected_file, user_filter_status.upper())
-            print(filter_by_status)
-        print(sorted_dict(filter_by_status))
+            # print(filter_by_status)
+        sorted_transactions = sorted_dict(filter_by_status)
+        print(sorted_transactions)
+        user_currency = input(f"Выводить только рублевые транзакции? Да/Нет\n").upper()
+        if user_currency.startswith("ДА"):
+            ruble_transactions = list(filter_by_currency(sorted_transactions, "RUB"))
+
+            output_list = ruble_transactions
+            print(output_list)
+
+        else:
+            output_list = sorted_transactions
+            print(output_list)
+
+
 
 
 
