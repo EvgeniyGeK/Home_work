@@ -20,9 +20,9 @@ def process_bank_operations(data: list[dict], categories: str) -> dict:
     """Функция для подсчета количества банковских операций определенного типа."""
 
     count_description = {}
-    lower_category = categories.strip().lower()
+    upper_category = categories.strip().upper()
     for x in categories:
-        description = [i.get("description") for i in data if i.get("description").lower() in lower_category]
+        description = [i.get("description") for i in data if i.get("description").upper() in upper_category]
         count_description = Counter(description)
 
     # print(count_description)

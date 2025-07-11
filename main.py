@@ -75,9 +75,13 @@ def main():
         if user_description.startswith("ДА"):
             user_filter_description = input(f"Введите описание операции по которой необходимо выполнить фильтрацию\n").upper()
             filter_by_word = process_bank_search(output_list, user_filter_description)
-            count_transaction = process_bank_operations(filter_by_word, user_filter_description)
+            count_transaction = process_bank_operations(filter_by_word, user_filter_description.upper())
+            count_result = count_transaction[user_filter_description]
+            print(f"Ключи в count_transaction: {list(count_transaction.keys())}")
+
             print(f"Распечатываю итоговый список транзакций\n", filter_by_word)
             print(count_transaction)
+            print(f'Всего банковских операций в выборке: {count_result}')
         else:
             filter_by_word = output_list
             print(f"Распечатываю итоговый список транзакций\n", filter_by_word)
