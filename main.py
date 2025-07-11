@@ -4,7 +4,7 @@ from config import PATH
 from sorted_dict_main import sorted_dict
 from src.generators import filter_by_currency
 from src.processing import filter_by_state
-from src.search_of_dict import process_bank_operations
+from src.search_of_dict import process_bank_operations, process_bank_search
 
 from src.utils import read_json_file
 from src.utils_csv_exel import read_csv, read_exel
@@ -73,9 +73,15 @@ def main():
 
         user_description = input(f"Отфильтровать список транзакций по определенному слову в описании? Да/Нет\n").upper()
         if user_description.startswith("ДА"):
-            user_filter_description = list(input(f"Введите описание операции по которой необходимо выполнить фильтрацию\n").upper())
-            filter_by_word = process_bank_operations(output_list, user_filter_description)
-            print(filter_by_word)
+            user_filter_description = input(f"Введите описание операции по которой необходимо выполнить фильтрацию\n").upper()
+            filter_by_word = process_bank_search(output_list, user_filter_description)
+            count_transaction = process_bank_operations(filter_by_word, user_filter_description)
+            print(f"Распечатываю итоговый список транзакций\n", filter_by_word)
+            print(count_transaction)
+        else:
+            filter_by_word = output_list
+            print(f"Распечатываю итоговый список транзакций\n", filter_by_word)
+
 
 
 
