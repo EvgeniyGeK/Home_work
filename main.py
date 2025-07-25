@@ -78,11 +78,14 @@ def main():
             count_transaction = process_bank_operations(filter_by_word, user_filter_description.casefold())
             count_result = next((value for key, value in count_transaction.items() if
                                  key.casefold() == user_filter_description.casefold()), 0)
-            print(f"Ключи в count_transaction: {list(count_transaction.keys())}")
 
-            print(f"Распечатываю итоговый список транзакций\n", filter_by_word)
+            print(f"Распечатываю итоговый список транзакций\n")
             print(count_transaction)
             print(f'Всего банковских операций в выборке: {count_result}')
+            for i in count_transaction:
+                if "Открытие" in user_description:
+
+
         else:
             filter_by_word = output_list
             print(f"Распечатываю итоговый список транзакций\n", filter_by_word)
