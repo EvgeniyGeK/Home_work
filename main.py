@@ -73,10 +73,11 @@ def main():
 
         user_description = input(f"Отфильтровать список транзакций по определенному слову в описании? Да/Нет\n").upper()
         if user_description.startswith("ДА"):
-            user_filter_description = input(f"Введите описание операции по которой необходимо выполнить фильтрацию\n").upper()
+            user_filter_description = input(f"Введите описание операции по которой необходимо выполнить фильтрацию\n")
             filter_by_word = process_bank_search(output_list, user_filter_description)
-            count_transaction = process_bank_operations(filter_by_word, user_filter_description.upper())
-            count_result = count_transaction[user_filter_description]
+            count_transaction = process_bank_operations(filter_by_word, user_filter_description.casefold())
+            count_result = next((value for key, value in count_transaction.items() if
+                                 key.casefold() == user_filter_description.casefold()), 0)
             print(f"Ключи в count_transaction: {list(count_transaction.keys())}")
 
             print(f"Распечатываю итоговый список транзакций\n", filter_by_word)
