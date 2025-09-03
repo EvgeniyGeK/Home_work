@@ -12,7 +12,7 @@ from src.utils_csv_exel import read_csv, read_exel
 
 
 def main():
-    # while True:
+
 
 
     try:
@@ -99,17 +99,6 @@ def main():
 
 
 
-
-    #
-    # user_JSON ("1. Получить информацию о транзакциях из JSON-файла. ' '")
-    # user_CSV = input ("2. Получить информацию о транзакциях из CSV-файла. ' '")
-    # user_XLSX = input("3. Получить информацию о транзакциях из XLSX-файла. ''")
-    # if user_JSON:
-    #     print("a")
-    # elif user_CSV:
-    #     print("b")
-    # else:
-    #     print("c")
 
 
 
