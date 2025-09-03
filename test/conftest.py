@@ -180,3 +180,36 @@ def test_search_user_request():
 @pytest.fixture
 def test_process_bank_operations():
     return ["Перевод организации", "Перевод с карты на счет", "Перевод с карты на карту"]
+
+
+@pytest.fixture
+def sample_transactions():
+    """
+    Эта фикстура возвращает образец данных для тестирования.
+    функции print_transaction_info
+    """
+    return [
+        {
+            "id": 441945886,
+            "state": "EXECUTED",
+            "date": "2019-08-26T10:50:58.294041",
+            "operationAmount": {
+                "amount": "31957.58",
+                "currency": {"name": "руб.", "code": "RUB"}
+            },
+            "description": "Перевод организации",
+            "from": "Maestro 1596837868705199",
+            "to": "Счет 64686473678894779589"
+        },
+        {
+            "id": 587085106,
+            "state": "EXECUTED",
+            "date": "2018-03-23T10:45:06.972075",
+            "operationAmount": {
+                "amount": "48223.05",
+                "currency": {"name": "руб.", "code": "RUB"}
+            },
+            "description": "Открытие вклада",
+            "to": "Счет 41421565395219882431"
+        }
+    ]
