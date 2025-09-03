@@ -1,7 +1,5 @@
 import pytest
 
-from io import StringIO
-import sys
 
 from src.print_transaction_info import print_transactions
 

@@ -3,6 +3,7 @@
 from config import PATH
 from sorted_dict_main import sorted_dict
 from src.generators import filter_by_currency
+from src.print_transaction_info import print_transactions
 from src.processing import filter_by_state
 from src.search_of_dict import process_bank_operations, process_bank_search
 
@@ -82,33 +83,12 @@ def main():
             print(f"Распечатываю итоговый список транзакций\n")
             print(count_transaction)
             print(f'Всего банковских операций в выборке: {count_result}')
-            for i in count_transaction:
-                if "Открытие" in user_description:
+            print_transactions(filter_by_word)
 
 
         else:
             filter_by_word = output_list
-            print(f"Распечатываю итоговый список транзакций\n", filter_by_word)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            print_transactions(filter_by_word)
 
 
     except Exception as e:
