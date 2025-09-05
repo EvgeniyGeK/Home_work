@@ -1,7 +1,7 @@
 
 
 from config import PATH
-from sorted_dict_main import sorted_dict
+from src.sorted_dict_main import sorted_dict
 from src.generators import filter_by_currency
 from src.print_transaction_info import print_transactions
 from src.processing import filter_by_state
@@ -47,6 +47,7 @@ def main():
 
             filter_by_status = filter_by_state(selected_file, user_filter_status.upper())
             print(f"Операции отфильтрованы по статусу {user_filter_status}")
+            print(filter_by_status)
 
 
         else:
@@ -74,7 +75,8 @@ def main():
 
         user_description = input(f"Отфильтровать список транзакций по определенному слову в описании? Да/Нет\n").upper()
         if user_description.startswith("ДА"):
-            user_filter_description = input(f"Введите описание операции по которой необходимо выполнить фильтрацию\n")
+            user_filter_description = input(f"Введите описание операции по которой необходимо выполнить фильтрацию\n").upper()
+            # if user_filter_description in output_list[description]:
             filter_by_word = process_bank_search(output_list, user_filter_description)
             count_transaction = process_bank_operations(filter_by_word, user_filter_description.casefold())
             count_result = next((value for key, value in count_transaction.items() if
