@@ -59,9 +59,9 @@ def main():
 
                 break
             filter_by_status = filter_by_state(selected_file, user_filter_status.upper())
-            # print(filter_by_status)
+            print(filter_by_status)
         sorted_transactions = sorted_dict(filter_by_status)
-
+        print(sorted_transactions)
         user_currency = input(f"Выводить только рублевые транзакции? Да/Нет\n").upper()
         if user_currency.startswith("ДА"):
             ruble_transactions = list(filter_by_currency(sorted_transactions, "RUB"))
