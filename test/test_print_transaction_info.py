@@ -1,6 +1,3 @@
-import pytest
-
-
 from src.print_transaction_info import print_transactions
 
 

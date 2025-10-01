@@ -1,5 +1,4 @@
 def filter_by_currency(transactions: list[dict], currency: str) -> dict:
-
     """
     Итератор, возвращающий транзакции, соответствующие заданной валюте.
     Поддерживаются оба типа структур.

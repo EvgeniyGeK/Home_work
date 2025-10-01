@@ -3,9 +3,9 @@ def filter_by_state(user_state: list[dict], state: str) -> list:
 
     filter_list = []
     for transaction in user_state:
-        if 'state' not in transaction:
+        if "state" not in transaction:
             continue  # пропускаем запись, если нет нужного поля
-        elif transaction['state'] == state:
+        elif transaction["state"] == state:
             filter_list.append(transaction)
     return filter_list
 

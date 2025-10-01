@@ -1,5 +1,5 @@
 import csv
-import openpyxl
+
 import pandas as pd
 
 
@@ -10,7 +10,6 @@ def read_exel(path_file: str) -> list:
         return exel_data
     except Exception as e:
         raise Exception(f"Произошла ошибка: {e}")
-
 
 
 def read_csv(path_to_file: str) -> list:
