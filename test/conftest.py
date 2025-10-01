@@ -232,3 +232,37 @@ def bank_operations():
             "to": "Счет 41421565395219882431",
         },
     ]
+
+@pytest.fixture()
+def sample_transactions_diff_type():
+    """Фикстура передает транзакции с разными операционными данными для функции print_transactions"""
+    return [
+        {
+            "id": 441945886,
+            "state": "EXECUTED",
+            "date": "2019-08-26T10:50:58.294041",
+            "operationAmount": {"amount": "31957.58", "currency": {"name": "buks", "code": "USD"}},
+            "description": "Перевод организации",
+            "from": "Maestro 1596837868705199",
+            "to": "Счет 64686473678894779589",
+        },
+        {
+            "id": 587085106,
+            "state": "EXECUTED",
+            "date": "2018-03-23T10:45:06.972075",
+            "operationAmount": {"amount": "48223.05", "currency": {"name": "euro", "code": "EUR"}},
+            "description": "Открытие вклада",
+            "to": "Счет 41421565395219882431",
+        },
+    ]
+
+
+@pytest.fixture
+def invalid_transaction_data():
+    """Фикстура для теста исключений функции print_transactions"""
+    return [
+        {},
+        {"date": "2023-01-01", "description": "Invalid transaction"},
+        {"operationAmount": {}},
+        {"from": "Unknown card", "to": "Unknown account"}
+    ]
