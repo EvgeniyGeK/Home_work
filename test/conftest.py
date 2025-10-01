@@ -140,7 +140,7 @@ def test_search_str():
             "currency_code": "PEN",
             "from": "Счет 58803664561298323391",
             "to": "Счет 39745660563456619397",
-            "description": "Перевод организации",
+            "description": "Перевод с карты на карту",
         },
         {
             "id": 3598919.0,
@@ -151,7 +151,7 @@ def test_search_str():
             "currency_code": "COP",
             "from": "Discover 3172601889670065",
             "to": "Discover 0720428384694643",
-            "description": "Перевод с карты на счет",
+            "description": "Перевод с карты на карту",
         },
         {
             "id": 593027.0,
@@ -162,7 +162,7 @@ def test_search_str():
             "currency_code": "TZS",
             "from": "Visa 1959232722494097",
             "to": "Visa 6804119550473710",
-            "description": "Перевод с карты на карту",
+            "description": "Перевод организации",
         },
     ]
 
@@ -170,13 +170,13 @@ def test_search_str():
 @pytest.fixture
 def test_search_bar():
     """Фикстура пользовательского запроса для test_search_of_dict"""
-    return "EXECUTED"
+    return "Перевод с карты на карту"
 
 
 @pytest.fixture
 def test_search_user_request():
     """Фикстура пользовательского запроса для test_search_of_dict"""
-    return str("canceled")
+    return str("Перевод организации")
 
 
 @pytest.fixture
@@ -208,4 +208,24 @@ def sample_transactions():
             "description": "Открытие вклада",
             "to": "Счет 41421565395219882431",
         },
+    ]
+@pytest.fixture
+def bank_operations():
+    return [{
+            "id": 441945886,
+            "state": "EXECUTED",
+            "date": "2019-08-26T10:50:58.294041",
+            "operationAmount": {"amount": "31957.58", "currency": {"name": "руб.", "code": "RUB"}},
+            "description": "Перевод организации",
+            "from": "Maestro 1596837868705199",
+            "to": "Счет 64686473678894779589",
+        },
+        {
+            "id": 587085106,
+            "state": "EXECUTED",
+            "date": "2018-03-23T10:45:06.972075",
+            "operationAmount": {"amount": "48223.05", "currency": {"name": "руб.", "code": "RUB"}},
+            "description": "Открытие вклада",
+            "to": "Счет 41421565395219882431",
+        }
     ]

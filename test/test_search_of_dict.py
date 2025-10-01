@@ -13,7 +13,7 @@ def test_get_process_bank_search(test_search_str, test_search_bar):
             "currency_code": "PEN",
             "from": "Счет 58803664561298323391",
             "to": "Счет 39745660563456619397",
-            "description": "Перевод организации",
+            "description": "Перевод с карты на карту",
         },
         {
             "id": 3598919.0,
@@ -24,7 +24,7 @@ def test_get_process_bank_search(test_search_str, test_search_bar):
             "currency_code": "COP",
             "from": "Discover 3172601889670065",
             "to": "Discover 0720428384694643",
-            "description": "Перевод с карты на счет",
+            "description": "Перевод с карты на карту",
         },
     ]
 
@@ -41,6 +41,6 @@ def test_user_search(test_search_str, test_search_user_request):
             "currency_code": "TZS",
             "from": "Visa 1959232722494097",
             "to": "Visa 6804119550473710",
-            "description": "Перевод с карты на карту",
+            "description": "Перевод организации",
         }
     ]

@@ -12,6 +12,10 @@ def filter_by_state(user_state: list[dict], state: str) -> list:
 
 def sort_by_date(user_date: list[dict], ascending: bool) -> list[dict]:
     """Функция сортировки по дате"""
+    for transaction in user_date:
+        if "date" not in transaction:
+            raise ValueError("Дата отсутствует")
+        else:
 
-    valid_dict = [i for i in user_date if "date" in i]
-    return sorted(valid_dict, key=lambda x: x.get("date"), reverse=not ascending)
+            valid_dict = [i for i in user_date if "date" in i]
+            return sorted(valid_dict, key=lambda x: x.get("date"), reverse=not ascending)

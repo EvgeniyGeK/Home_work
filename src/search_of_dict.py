@@ -18,13 +18,14 @@ def process_bank_operations(data: list[dict], categories: str) -> dict:
     """Функция для подсчета количества банковских операций определенного типа."""
 
     count_description = {}
-    upper_category = categories.strip().upper()
+    upper_category = categories.upper()
     for x in categories:
         description = [i.get("description") for i in data if i.get("description").upper() in upper_category]
         count_description = Counter(description)
 
-    # print(count_description)
+
     return count_description
+
 
 
 if __name__ == "__main__":
@@ -139,5 +140,4 @@ if __name__ == "__main__":
                 "to": "Счет 43241152692663622869",
             },
         ],
-        "Перевод организации",
-    )
+        "Перевод организации")

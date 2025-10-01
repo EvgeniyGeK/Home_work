@@ -1,9 +1,15 @@
 from collections import Counter
 
+import pytest
+
 from src.search_of_dict import process_bank_operations
 
 
-def test_fnk_bank_operation(test_search_str, test_process_bank_operations):
-    assert process_bank_operations(test_search_str, test_process_bank_operations) == Counter(
-        {"Перевод организации": 1, "Перевод с карты на счет": 1, "Перевод с карты на карту": 1}
-    )
+
+@pytest.mark.parametrize("categories, expected_result", [
+    ("Перевод организации, Открытие вклада",
+     Counter({"Перевод организации": 1, "Открытие вклада": 1}))
+])
+def test_process_bank_operations(bank_operations, categories, expected_result):
+    result = process_bank_operations(bank_operations, categories)
+    assert result == expected_result
