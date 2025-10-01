@@ -209,9 +209,12 @@ def sample_transactions():
             "to": "Счет 41421565395219882431",
         },
     ]
+
+
 @pytest.fixture
 def bank_operations():
-    return [{
+    return [
+        {
             "id": 441945886,
             "state": "EXECUTED",
             "date": "2019-08-26T10:50:58.294041",
@@ -227,5 +230,5 @@ def bank_operations():
             "operationAmount": {"amount": "48223.05", "currency": {"name": "руб.", "code": "RUB"}},
             "description": "Открытие вклада",
             "to": "Счет 41421565395219882431",
-        }
+        },
     ]
