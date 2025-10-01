@@ -2,7 +2,7 @@ from src.processing import sort_by_date
 
 
 def sorted_dict(filter_by_status):
-    """ Функция меню сортировки"""
+    """Функция меню сортировки"""
     while True:
         user_sorted_day = input("Отсортировать операции по дате? Да/Нет\n").strip().lower()
 

@@ -233,6 +233,7 @@ def bank_operations():
         },
     ]
 
+
 @pytest.fixture()
 def sample_transactions_diff_type():
     """Фикстура передает транзакции с разными операционными данными для функции print_transactions"""
@@ -264,5 +265,5 @@ def invalid_transaction_data():
         {},
         {"date": "2023-01-01", "description": "Invalid transaction"},
         {"operationAmount": {}},
-        {"from": "Unknown card", "to": "Unknown account"}
+        {"from": "Unknown card", "to": "Unknown account"},
     ]

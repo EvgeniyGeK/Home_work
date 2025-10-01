@@ -22,8 +22,10 @@ def print_transactions(transaction: list[dict]) -> None:
                     print("")
             else:
                 if "Открытие" in i["description"]:
-                    print(f"{i['date']} {i['description']}\n{mask_account_card(i['to'])}\n" 
-                          f"Сумма {i['amount']} {i['currency_name']}")
+                    print(
+                        f"{i['date']} {i['description']}\n{mask_account_card(i['to'])}\n"
+                        f"Сумма {i['amount']} {i['currency_name']}"
+                    )
 
                 else:
                     print(
@@ -34,6 +36,3 @@ def print_transactions(transaction: list[dict]) -> None:
                     print("")
     except Exception as e:
         print(e, "Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
-
-
-
