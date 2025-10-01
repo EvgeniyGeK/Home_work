@@ -1,4 +1,5 @@
 import io
+import os
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -9,12 +10,25 @@ from src.utils_csv_exel import read_csv, read_exel
 
 
 def test_read_exel():
-    """Тест функции чтения exel файла на ошибки"""
+    """Тест функции чтения excel файла на ошибки"""
 
-    with tempfile.NamedTemporaryFile(delete=False) as my_file:
-        my_file.write(b"my_file.xls")
-        result = read_exel(my_file.name)
-        assert result == []
+    # Создание временного DataFrame
+    temp_df = pd.DataFrame(
+        {
+            "A": ["test_value"],
+            "B": [123],
+        }
+    )
+
+    # Создание временного Excel-файла
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        file_path = os.path.join(tmp_dir, "temp.xlsx")
+        temp_df.to_excel(file_path, index=False)
+
+        # Чтение файла
+        result = read_exel(file_path)
+        expected_output = [{"A": "test_value", "B": 123}]
+        assert result == expected_output
 
 
 def test_read_csv():
@@ -43,12 +57,9 @@ class TestReadExel(unittest.TestCase):
         """Тест на ошибку функцией read_exel"""
         mock_read_excel.side_effect = FileNotFoundError("Файл не найден")
         path_to_file = "nonexistent_file.xlsx"
-        result = read_exel(path_to_file)
-        self.assertEqual(result, [])
-
-
-if __name__ == "__main__":
-    unittest.main()
+        with self.assertRaises(Exception) as context:
+            read_exel(path_to_file)
+        self.assertIn("Произошла ошибка:", str(context.exception))
 
 
 class TestReadCsv(unittest.TestCase):
@@ -70,7 +81,3 @@ class TestReadCsv(unittest.TestCase):
         path_to_file = "invalid_path.csv"
         result = read_csv(path_to_file)
         self.assertEqual(result, [])
-
-
-if __name__ == "__main__":
-    unittest.main()

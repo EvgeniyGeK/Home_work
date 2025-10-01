@@ -15,6 +15,6 @@ def read_json_file(file_path: str) -> [dict, str]:
         logger.info("Функция read_json_file успешно завершила свою работу")
         return reading_dict
     except Exception as e:
-        # (FileNotFoundError, json.JSONDecodeError, TypeError, ValueError, KeyError):
+
         logger.exception(f"Обнаружена ошибка: {e}", exc_info=True)
         return []
